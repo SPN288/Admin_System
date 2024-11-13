@@ -29,15 +29,18 @@ const AdminLoginForm = () => {
             });
 
             const result =await response.json();
-            const {success,error}=result;
+            console.log(result);
+            const {success,message,jwttoken,email_id,error}=result;
 
             if (success) {
-                alert("sign in successful")
+                localStorage.setItem('atoken',jwttoken);
+                localStorage.setItem('amail',email_id)
+                alert("Log in successful")
                 setTimeout(()=>{navigate("/adminpage")},1000);
             } else if(error){
                 const er=error?.details[0].message;
                 alert(er);
-            }else{alert("enter correct credentials")}
+            }else{alert(message)}
         } catch (error) {
             console.error("Error submitting form data:", error);
             alert("There was an error submitting the form.");
@@ -72,7 +75,7 @@ const AdminLoginForm = () => {
                         onChange={handleChange}
                         required
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </>
