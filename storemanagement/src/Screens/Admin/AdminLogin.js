@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../loginform.css";
 import Navbar from "../../Components/Navbar";
 
-const UserLoginForm = () => {
+const AdminLoginForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email_id: "",
         password: ""
@@ -18,7 +20,7 @@ const UserLoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createmanager", {
+            const response = await fetch("http://localhost:5000/adminlogin", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -26,15 +28,16 @@ const UserLoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
-                alert("Employee data submitted successfully!");
-                setFormData({
-                    email_id: "",
-                    password: ""
-                });
-            } else {
-                alert("Failed to submit employee data.");
-            }
+            const result =await response.json();
+            const {success,error}=result;
+
+            if (success) {
+                alert("sign in successful")
+                setTimeout(()=>{navigate("/adminpage")},1000);
+            } else if(error){
+                const er=error?.details[0].message;
+                alert(er);
+            }else{alert("enter correct credentials")}
         } catch (error) {
             console.error("Error submitting form data:", error);
             alert("There was an error submitting the form.");
@@ -45,7 +48,7 @@ const UserLoginForm = () => {
         <>
             <Navbar email_id="satya" logout="logout" />
             <div className="form-container">
-                <h2>User Login</h2>
+                <h2>Admin Login</h2>
 
                 <form onSubmit={handleSubmit}>
 
@@ -69,11 +72,11 @@ const UserLoginForm = () => {
                         onChange={handleChange}
                         required
                     />
-                    <button type="submit">Login</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </>
     );
 };
 
-export default UserLoginForm;
+export default AdminLoginForm;

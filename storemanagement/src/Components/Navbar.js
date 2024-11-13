@@ -1,6 +1,6 @@
 import React from 'react';
 import './nav.css'
-
+import {Link} from 'react-router-dom'
 export default function Navbar(props) {
   return (
     <>
@@ -8,7 +8,7 @@ export default function Navbar(props) {
     <nav className='navbar'>
             <div>Store Management</div>
             <ul className='nav-links'>
-                    <li>Home</li>
+                    <li><Link to='/'>Home</Link></li>
                     <li>{props.email_id}</li>
                     <li>{props.logout}</li>
             </ul>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../loginform.css";
 import Navbar from "../../Components/Navbar";
 
-const UserLoginForm = () => {
+const ManagerLoginForm = () => {
     const [formData, setFormData] = useState({
         email_id: "",
         password: ""
@@ -45,7 +45,7 @@ const UserLoginForm = () => {
         <>
             <Navbar email_id="satya" logout="logout" />
             <div className="form-container">
-                <h2>User Login</h2>
+                <h2>Manager Login</h2>
 
                 <form onSubmit={handleSubmit}>
 
@@ -76,4 +76,4 @@ const UserLoginForm = () => {
     );
 };
 
-export default UserLoginForm;
+export default ManagerLoginForm;
