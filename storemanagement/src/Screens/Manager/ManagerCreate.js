@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import {Link,useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import "../loginform.css";
-import Navbar from "../../Components/Navbar";
+
 
 const ManagerCreateForm = () => {
     const navigate = useNavigate();
