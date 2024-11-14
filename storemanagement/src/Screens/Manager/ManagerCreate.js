@@ -36,7 +36,7 @@ const ManagerCreateForm = () => {
 
             if (success) {
                 alert("SingUP successful")
-                setTimeout(()=>{navigate("/")},1000);
+                setTimeout(()=>{navigate("/adminpage")},1000);
             } else if(error){
                 const er=error?.details[0].message;
                 alert(er);

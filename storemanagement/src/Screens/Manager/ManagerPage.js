@@ -60,11 +60,11 @@ export default function ManagerPage() {
 
   return (
     <>
-      <Navbar email_id={mmail} logout={<button onClick={handleLogOut}>Logout</button>} />
+      <Navbar email_id={mmail} logout={<button className='button-32' onClick={handleLogOut}>Logout</button>} />
       <div className='displaybox'>
         <br />
         <h1>Users</h1>
-        <button onClick={toggleCreateUser}>
+        <button className='button-84' onClick={toggleCreateUser}>
           {showCreateUser ? 'close' : 'Add User'}
         </button>
         {showCreateUser && (
@@ -72,7 +72,8 @@ export default function ManagerPage() {
             <UCreateForm />
           </div>
         )}
-        <button onClick={toggleShowUsers}>
+        <br />
+        <button className='button-84' onClick={toggleShowUsers}>
           {showUsers ? 'Hide User Data' : 'Show User Data'}
         </button>
 
@@ -83,7 +84,7 @@ export default function ManagerPage() {
                 <div className='dbox'>
                   <li key={user.email_id}>
                     Name-{user.name} <br /> Email ID - {user.email_id} <br />Department - {user.department} <br /> Employee ID - {user.emp_id} <br /> Mobile Number - {user.mobile_number} <br />
-                    <button onClick={() => deleteUser(user.email_id)}>Delete User</button>
+                    <button className="custom-btn btn-2" onClick={() => deleteUser(user.email_id)}>Delete</button>
                   </li>
                 </div>
               ))}

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation,useNavigate } from 'react-router-dom'
 import "../loginform.css";
-import Navbar from "../../Components/Navbar";
 
 const UCreateForm = () => {
     const navigate = useNavigate();
+    const location =useLocation();
     const [formData, setFormData] = useState({
 
 
@@ -42,7 +42,13 @@ const UCreateForm = () => {
 
             if (success) {
                 alert("SingUP successful")
-                setTimeout(() => { navigate("/") }, 1000);
+                if(
+                    location.pathname==='/adminpage'
+                ){navigate('/adminpage')}
+                if(
+                    location.pathname==='/managerpage'
+                ){navigate('/managerpage')}
+                
             } else if (error) {
                 const er = error?.details[0].message;
                 alert(er);

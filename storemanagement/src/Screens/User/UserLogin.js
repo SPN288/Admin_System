@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import "../loginform.css";
 import Navbar from "../../Components/Navbar";
 
@@ -50,7 +50,7 @@ const UserLoginForm = () => {
 
     return (
         <>
-            <Navbar email_id="satya" logout="logout" />
+            <Navbar/>
             <div className="form-container">
                 <h2>User Login</h2>
 
@@ -76,7 +76,7 @@ const UserLoginForm = () => {
                         onChange={handleChange}
                         required
                     />
-                    <button type="submit">Login</button>
+                    <button className="lbutton" type="submit">Login</button><p>Not a User  <Link to='/usercreate'>SignUp</Link></p>
                 </form>
             </div>
         </>

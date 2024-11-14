@@ -15,8 +15,10 @@ export default function UserPage() {
   }
   return (
     <>
-    <Navbar email_id={umail} logout={<button onClick={handleLogOut}>Logout</button>} />
-    <div>UserPage</div>
+    <Navbar email_id={umail} logout={<button className='button-32' onClick={handleLogOut}>Logout</button>} />
+
+    <div className='displaybox'>
+      <br /><br /><h1> WELCOME TO USER PAGE</h1></div>
     </>
   )
 }

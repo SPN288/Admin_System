@@ -1,6 +1,7 @@
 .form-container {
     max-width: 400px;
-    margin: 0 auto;
+    margin:  auto;
+    margin-top: 10px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -11,6 +12,9 @@
   h2 {
     text-align: center;
     color: #333;
+  }
+  p{
+    text-align: center;
   }
   
   form {
@@ -32,7 +36,7 @@
     border: 1px solid #ccc;
   }
   
-  button {
+  .lbutton {
     padding: 10px;
     font-size: 16px;
     color: #fff;
@@ -42,7 +46,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .lbutton:hover {
     background-color: #0056b3;
   }
   

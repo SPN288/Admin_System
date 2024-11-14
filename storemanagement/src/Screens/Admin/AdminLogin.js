@@ -49,7 +49,7 @@ const AdminLoginForm = () => {
 
     return (
         <>
-            <Navbar email_id="satya" logout="logout" />
+            <Navbar/>
             <div className="form-container">
                 <h2>Admin Login</h2>
 
@@ -75,7 +75,7 @@ const AdminLoginForm = () => {
                         onChange={handleChange}
                         required
                     />
-                    <button type="submit">Login</button>
+                    <button className="lbutton" type="submit">Login</button>
                 </form>
             </div>
         </>

@@ -39,6 +39,11 @@ export default function AdminPage() {
   }, []);
 
   // Function to delete a user by email_id
+  const handleDeleteUser = (emailId) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      deleteUser(emailId)
+    }
+  };
   const deleteUser = async (emailId) => {
     try {
       const response = await fetch(`http://localhost:5000/deleteuser/${emailId}`, {
@@ -57,6 +62,12 @@ export default function AdminPage() {
   };
 
   // Function to delete a manager by email_id
+  const handleDeleteManager = (emailId) => {
+    if (window.confirm('Are you sure you want to delete this Manager?')) {
+      deleteManager(emailId)
+    }
+  };
+  
   const deleteManager = async (emailId) => {
     try {
       const response = await fetch(`http://localhost:5000/deletemanager/${emailId}`, {
@@ -93,11 +104,11 @@ export default function AdminPage() {
   return (
     <>
 
-      <Navbar email_id={amail} logout={<button onClick={handleLogOut}>Logout</button>} />
+      <Navbar email_id={amail} logout={<button className='button-32' onClick={handleLogOut}>Logout</button>} />
       <div className='displaybox'>
         <br />
         <h1>Users</h1>
-        <button onClick={toggleCreateUser}>
+        <button className='button-84' onClick={toggleCreateUser}>
           {showCreateUser ? 'close' : 'Add User'}
         </button>
         {showCreateUser && (
@@ -106,8 +117,9 @@ export default function AdminPage() {
           </div>
         )}
 
+        <br />
 
-        <button onClick={toggleShowUsers}>
+        <button className='button-84' onClick={toggleShowUsers}>
           {showUsers ? 'close' : 'Show User Data'}
         </button>
 
@@ -118,7 +130,7 @@ export default function AdminPage() {
                 <div className='dbox'>
                   <li key={user.email_id}>
                     Name-{user.name} <br /> Email ID - {user.email_id} <br />Department - {user.department} <br /> Employee ID - {user.emp_id} <br /> Mobile Number - {user.mobile_number} <br />
-                    <button onClick={() => deleteUser(user.email_id)}>Delete User</button>
+                    <button className="custom-btn btn-2" onClick={() => handleDeleteUser(user.email_id)}>Delete </button>
                   </li>
                 </div>
               ))}
@@ -127,7 +139,7 @@ export default function AdminPage() {
         )}
 
         <h1>Managers</h1>
-        <button onClick={toggleCreateManager}>
+        <button className='button-84' onClick={toggleCreateManager}>
           {showCreateManager ? 'close' : 'Add Manager'}
         </button>
         {showCreateManager && (
@@ -136,8 +148,8 @@ export default function AdminPage() {
           </div>
         )}
 
-
-        <button onClick={toggleShowManagers}>
+        <br />
+        <button className='button-84' onClick={toggleShowManagers}>
           {showManagers ? 'Close' : 'Show Manager Data'}
         </button>
         {showManagers && (
@@ -147,7 +159,7 @@ export default function AdminPage() {
                 <div className='dbox'>
                   <li key={manager.email_id}>
                     Name - {manager.name} <br />Employee ID - {manager.emp_id} <br /> Email Id - {manager.email_id} <br /> Store ID - {manager.store_id} <br /> Mobile Number - {manager.mobile_number} <br />
-                    <button onClick={() => deleteManager(manager.email_id)}>Delete Manager</button>
+                    <button className="custom-btn btn-2" onClick={() => handleDeleteManager(manager.email_id)} >Delete</button>
                   </li>
                 </div>
               ))}
