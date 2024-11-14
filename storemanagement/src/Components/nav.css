@@ -1,12 +1,16 @@
 header {
-    background-color: #f2f2f2; /* Adjust background color as needed */
+    background-color: #c7c7c7; /* Adjust background color as needed */
     padding: 10px;
+    position: sticky;
+    top: 0;
+    margin-bottom: 0;
   }
   
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+   
   }
   
   .navbar .nav-links {

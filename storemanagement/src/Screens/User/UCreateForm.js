@@ -1,29 +1,35 @@
 import React, { useState } from "react";
-import {Link,useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "../loginform.css";
 import Navbar from "../../Components/Navbar";
 
-const ManagerCreateForm = () => {
+const UCreateForm = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
+
+
         emp_id: "",
-        email_id: "",
         name: "",
+        email_id: "",
         mobile_number: "",
-        store_id: "",
+        department: "NA",
         password: ""
     });
+
+    const departments = ["HR", "Finance", "Engineering", "Marketing", "Sales"];
+
     // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+
     // Handle form submission using fetch API
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createmanager", {
+            const response = await fetch("http://localhost:5000/createuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -31,16 +37,16 @@ const ManagerCreateForm = () => {
                 body: JSON.stringify(formData),
             });
 
-            const result =await response.json();
-            const {success,error}=result;
+            const result = await response.json();
+            const { success, error } = result;
 
             if (success) {
                 alert("SingUP successful")
-                setTimeout(()=>{navigate("/")},1000);
-            } else if(error){
-                const er=error?.details[0].message;
+                setTimeout(() => { navigate("/") }, 1000);
+            } else if (error) {
+                const er = error?.details[0].message;
                 alert(er);
-            }else{alert("enter correct credentials")}
+            } else { alert("enter correct credentials") }
         } catch (error) {
             console.error("Error submitting form data:", error);
             alert("There was an error submitting the form.");
@@ -50,7 +56,7 @@ const ManagerCreateForm = () => {
     return (
         <>
             <div className="form-container">
-                <h2>Manager Registration Form</h2>
+                <h2>Employee Registration Form</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="emp_id">Employee ID:</label>
                     <input
@@ -59,17 +65,6 @@ const ManagerCreateForm = () => {
                         name="emp_id"
                         placeholder="Enter Employee ID"
                         value={formData.emp_id}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <label htmlFor="store_id">Store ID:</label>
-                    <input
-                        type="text"
-                        id="store_id"
-                        name="store_id"
-                        placeholder="Enter Store ID"
-                        value={formData.store_id}
                         onChange={handleChange}
                         required
                     />
@@ -118,11 +113,25 @@ const ManagerCreateForm = () => {
                         required
                     />
 
-                    <button type="submit">Create Manager</button>
+                    <label htmlFor="department">Department:</label>
+                    <select
+                        id="department"
+                        name="department"
+                        value={formData.department}
+                        onChange={handleChange}
+                    >
+                        {departments.map((dept) => (
+                            <option key={dept} value={dept}>
+                                {dept}
+                            </option>
+                        ))}
+                    </select>
+
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </>
     );
 };
 
-export default ManagerCreateForm;
+export default UCreateForm;

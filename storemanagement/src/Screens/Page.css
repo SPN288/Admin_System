@@ -1,0 +1,19 @@
+.dbox{
+    border: 3px solid #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 3px;
+}
+.displaybox{
+    
+    align-items: center;
+    min-height: 100vh;
+    background: #e4ebf7;
+    text-align: center;
+    margin-top: 0;
+
+}

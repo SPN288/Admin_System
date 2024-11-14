@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../loginform.css";
 import Navbar from "../../Components/Navbar";
 
 const UserLoginForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email_id: "",
         password: ""
@@ -18,7 +20,7 @@ const UserLoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createmanager", {
+            const response = await fetch("http://localhost:5000/loginuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -26,20 +28,25 @@ const UserLoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
-                alert("Employee data submitted successfully!");
-                setFormData({
-                    email_id: "",
-                    password: ""
-                });
-            } else {
-                alert("Failed to submit employee data.");
-            }
+            const result =await response.json();
+            console.log(result);
+            const {success,message,jwttoken,email_id,error}=result;
+
+            if (success) {
+                localStorage.setItem('utoken',jwttoken);
+                localStorage.setItem('umail',email_id)
+                alert("Log in successful")
+                setTimeout(()=>{navigate("/userpage")},1000);
+            } else if(error){
+                const er=error?.details[0].message;
+                alert(er);
+            }else{alert(message)}
         } catch (error) {
             console.error("Error submitting form data:", error);
             alert("There was an error submitting the form.");
         }
     };
+    
 
     return (
         <>
