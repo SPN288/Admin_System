@@ -34,7 +34,7 @@ const loginuser = async (req,res)=>{
         }
         const jwttoken = jwt.sign({email_id:user.email_id,_id:user._id},process.env.JWT_SECRET,{expiresIn:'24h'});
 
-        res.status(201).json({message:'log succesfull',success:true,jwttoken,email_id});
+        res.status(201).json({role:"user",message:'log succesfull',success:true,jwttoken,email_id});
         
       } catch (error) {
         res.status(400).send(error);
@@ -71,7 +71,7 @@ const loginmanager = async (req,res)=>{
       }
       const jwttoken = jwt.sign({email_id:user.email_id,_id:user._id},process.env.M_JWT_SECRET,{expiresIn:'24h'});
 
-      res.status(201).json({message:'log succesfull',success:true,jwttoken,email_id});
+      res.status(201).json({role:"manager",message:'log succesfull',success:true,jwttoken,email_id});
       
     } catch (error) {
       res.status(400).send(error);
@@ -108,7 +108,7 @@ const loginAdmin = async (req,res)=>{
       }
       const jwttoken = jwt.sign({email_id:user.email_id,_id:user._id},process.env.A_JWT_SECRET,{expiresIn:'24h'});
 
-      res.status(201).json({message:'log succesfull',success:true,jwttoken,email_id});
+      res.status(201).json({role:"admin",message:'log succesfull',success:true,jwttoken,email_id});
       
     } catch (error) {
       res.status(400).send(error);

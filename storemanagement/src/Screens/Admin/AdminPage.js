@@ -125,16 +125,30 @@ export default function AdminPage() {
 
         {showUsers && (
           <div>
-            <ul>
-              {users.map((user) => (
-                <div className='dbox'>
-                  <li key={user.email_id}>
-                    Name-{user.name} <br /> Email ID - {user.email_id} <br />Department - {user.department} <br /> Employee ID - {user.emp_id} <br /> Mobile Number - {user.mobile_number} <br />
-                    <button className="custom-btn btn-2" onClick={() => handleDeleteUser(user.email_id)}>Delete </button>
-                  </li>
-                </div>
-              ))}
-            </ul>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email ID</th>
+                        <th>Department</th>
+                        <th>Employee ID</th>
+                        <th>Mobile No.</th>
+                        <th>...............</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user) => (
+                        <tr key={user._id}>
+                            <td>{user.name}</td>
+                            <td>{user.email_id}</td>
+                            <td>{user.department}</td>
+                            <td>{user.emp_id}</td>
+                            <td>{user.mobile_number}</td>
+                            <td>{<button className="custom-btn btn-2" onClick={() => handleDeleteUser(user.email_id)}>Delete </button>}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
           </div>
         )}
 
@@ -154,16 +168,31 @@ export default function AdminPage() {
         </button>
         {showManagers && (
           <div>
-            <ul>
-              {managers.map((manager) => (
-                <div className='dbox'>
-                  <li key={manager.email_id}>
-                    Name - {manager.name} <br />Employee ID - {manager.emp_id} <br /> Email Id - {manager.email_id} <br /> Store ID - {manager.store_id} <br /> Mobile Number - {manager.mobile_number} <br />
-                    <button className="custom-btn btn-2" onClick={() => handleDeleteManager(manager.email_id)} >Delete</button>
-                  </li>
-                </div>
-              ))}
-            </ul>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email ID</th>
+                        <th>Employee ID</th>
+                        <th>Store ID</th>
+                        <th>Mobile No.</th>
+                        <th>...............</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {managers.map((manager) => (
+                        <tr key={manager._id}>
+                            <td>{manager.name}</td>
+                            <td>{manager.email_id}</td>
+                            <td>{manager.emp_id}</td>
+                            <td>{manager.store_id}</td>
+                            <td>{manager.mobile_number}</td>
+                            <td>{<button className="custom-btn btn-2" onClick={() => handleDeleteUser(manager.email_id)}>Delete </button>}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            
           </div>
         )}
 

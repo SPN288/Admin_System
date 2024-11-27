@@ -10,7 +10,7 @@ export default function Uhandler({setisUserAuthincated}){
         if(localStorage.getItem('utoken')){
             setisUserAuthincated(true);
             if(
-                location.pathname==='/userlogin'
+                location.pathname==='/'
             ){navigate('/userpage',{replace:false})}
         }
     },[location,navigate,setisUserAuthincated])

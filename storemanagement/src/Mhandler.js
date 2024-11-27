@@ -10,7 +10,7 @@ export default function Mhandler({setisManagerAuthincated}){
         if(localStorage.getItem('mtoken')){
             setisManagerAuthincated(true);
             if(
-                location.pathname==='/managerlogin'
+                location.pathname==='/'
             ){navigate('/managerpage',{replace:false})}
         }
     },[location,navigate,setisManagerAuthincated])

@@ -30,7 +30,7 @@ const ManagerLoginForm = () => {
 
             const result =await response.json();
             console.log(result);
-            const {success,message,jwttoken,email_id,error}=result;
+            const {role,success,message,jwttoken,email_id,error}=result;
 
             if (success) {
                 localStorage.setItem('mtoken',jwttoken);

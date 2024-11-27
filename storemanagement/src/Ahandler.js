@@ -10,7 +10,7 @@ export default function Ahandler({setisAdminAuthincated}){
         if(localStorage.getItem('atoken')){
             setisAdminAuthincated(true);
             if(
-                location.pathname==='/adminlogin'
+                location.pathname==='/'
             ){navigate('/adminpage',{replace:false})}
         }
     },[location,navigate,setisAdminAuthincated])

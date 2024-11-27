@@ -20,7 +20,7 @@ const AdminLoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/adminlogin", {
+            const response = await fetch("http://localhost:5000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,19 +28,35 @@ const AdminLoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
-            const result =await response.json();
+            const result = await response.json();
             console.log(result);
-            const {success,message,jwttoken,email_id,error}=result;
+            const { role, success, message, jwttoken, email_id, error } = result;
 
             if (success) {
-                localStorage.setItem('atoken',jwttoken);
-                localStorage.setItem('amail',email_id)
-                alert("Log in successful")
-                setTimeout(()=>{navigate("/adminpage")},1000);
-            } else if(error){
-                const er=error?.details[0].message;
+
+
+                if (role === 'user') {
+                    localStorage.setItem('utoken', jwttoken);
+                    localStorage.setItem('umail', email_id)
+                    setTimeout(() => { navigate("/userpage") }, 1000);
+                    alert("Log in successful")
+                } else if (role === 'manager') {
+                    localStorage.setItem('mtoken', jwttoken);
+                    localStorage.setItem('mmail', email_id)
+                    setTimeout(() => { navigate("/managerpage") }, 1000);
+                    alert("Log in successful")
+                } else if (role === 'admin') {
+                    localStorage.setItem('atoken', jwttoken);
+                    localStorage.setItem('amail', email_id)
+                    setTimeout(() => { navigate("/adminpage") }, 1000);
+                    alert("Log in successful")
+                }
+
+
+            } else if (error) {
+                const er = error?.details[0].message;
                 alert(er);
-            }else{alert(message)}
+            } else { alert(message) }
         } catch (error) {
             console.error("Error submitting form data:", error);
             alert("There was an error submitting the form.");
@@ -49,9 +65,9 @@ const AdminLoginForm = () => {
 
     return (
         <>
-            <Navbar/>
+            
             <div className="form-container">
-                <h2>Admin Login</h2>
+                <h2>Login</h2>
 
                 <form onSubmit={handleSubmit}>
 
