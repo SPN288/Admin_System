@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Role = require('./models/Role')
-
 dotenv.config();
 
 const app = express();
