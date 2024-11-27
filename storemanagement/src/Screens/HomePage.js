@@ -3,22 +3,18 @@ import Navbar from '../Components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import './homepage.css'
 import AdminLoginForm from './Admin/AdminLogin';
+import {Link} from "react-router-dom";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const navtoadminlogin = () => { navigate("/adminlogin"); }
-  const navtomanagerlogin = () => { navigate("/managerlogin"); }
-  const navtouserlogin = () => { navigate("/userlogin"); }
+  
 
 
   return (
     <>
-      <Navbar />
+      <Navbar logout={<p>New User  <Link to='/usercreate'>SignUp</Link></p>} />
       <div className='home'>
         <div className='btnbox'>
-          {/* <button class="full-rounded" onClick={navtouserlogin}><span>User</span><div class="border full-rounded"></div></button><br /><br />
-          <button class="full-rounded" onClick={navtomanagerlogin}><span>Manager</span><div class="border full-rounded"></div></button><br /><br />
-          <button class="full-rounded" onClick={navtoadminlogin}><span>Admin</span><div class="border full-rounded"></div></button><br /><br /> */}
           <AdminLoginForm/>
         </div>
       </div>

@@ -187,7 +187,7 @@ export default function AdminPage() {
                             <td>{manager.emp_id}</td>
                             <td>{manager.store_id}</td>
                             <td>{manager.mobile_number}</td>
-                            <td>{<button className="custom-btn btn-2" onClick={() => handleDeleteUser(manager.email_id)}>Delete </button>}</td>
+                            <td>{<button className="custom-btn btn-2" onClick={() => handleDeleteManager(manager.email_id)}>Delete </button>}</td>
                         </tr>
                     ))}
                 </tbody>

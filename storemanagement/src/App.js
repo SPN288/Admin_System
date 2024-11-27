@@ -13,6 +13,7 @@ import AdminPage from './Screens/Admin/AdminPage';
 import Ahandler from './Ahandler';
 import Mhandler from './Mhandler';
 import Uhandler from './Uhandler';
+import ManageProductsManage from './Screens/Products/ManageProductsManage';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<HomePage/>} />      
       {/* <Route exact path="/adminlogin" element={<AdminLoginForm/>} /> */}
+      <Route exact path="/product" element={<ManageProductsManage/>} />
       <Route exact path="/adminpage" element={<PrivateAroute element={<AdminPage/>}/>} />
       <Route exact path='/managerlogin' element={<ManagerLoginForm/>}/>
       <Route exact path='/managerpage' element={<PrivateMAroute element={<ManagerPage/>}/>}/>

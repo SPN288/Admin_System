@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch((error) => console.error('Error connecting to MongoDB Atlas:', error));
 
 // Routes
-
+app.use('/',require("./routes/products"));
 app.use('/',require("./routes/user"));
 app.use('/',require("./routes/manager"));
 app.use('/',require("./routes/admin"));
