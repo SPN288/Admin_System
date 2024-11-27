@@ -1,7 +1,7 @@
 const UserModal = require('../models/usermodel');
 const AdminModel =require('../models/adminmodel');
 const ManagerModel= require('../models/managermodel');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt =require('jsonwebtoken')
 
 const signupuser = async (req,res)=>{

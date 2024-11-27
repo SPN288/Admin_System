@@ -7,8 +7,7 @@ import UserCreateForm from './Screens/User/UserCreate';
 import UserLoginForm from './Screens/User/UserLogin';
 import UserPage from './Screens/User/UserPage';
 import ManagerPage from './Screens/Manager/ManagerPage';
-import ManagerLoginForm from './Screens/Manager/ManagerLogin';
-import AdminLoginForm from './Screens/Admin/AdminLogin';
+
 import AdminPage from './Screens/Admin/AdminPage';
 import Ahandler from './Ahandler';
 import Mhandler from './Mhandler';
@@ -41,7 +40,7 @@ function App() {
       {/* <Route exact path="/product"  element={<ManageProductsManage/>} /> */}
       <Route exact path="/product"  element={<PrivateAroute element={<ManageProductsManage/>}/>} />
       <Route exact path="/adminpage" element={<PrivateAroute element={<AdminPage/>}/>} />
-      <Route exact path='/managerlogin' element={<ManagerLoginForm/>}/>
+      
       <Route exact path='/managerpage' element={<PrivateMAroute element={<ManagerPage/>}/>}/>
       <Route exact path='/userlogin' element={<UserLoginForm/>}/>
       <Route exact path='/usercreate' element={<UserCreateForm/>}/>
