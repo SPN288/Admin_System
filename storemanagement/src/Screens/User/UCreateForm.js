@@ -16,7 +16,7 @@ const UCreateForm = () => {
         password: ""
     });
 
-    const departments = ["HR", "Finance", "Engineering", "Marketing", "Sales"];
+    const departments = [ "Finance", "Engineering", "Marketing", "Sales"];
 
     // Handle input changes
     const handleChange = (e) => {
@@ -35,6 +35,14 @@ const UCreateForm = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
+            });
+            const roleData= {email_id:formData.email_id,role: "user"}
+            await fetch("http://localhost:5000/insert", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(roleData),
             });
 
             const result = await response.json();

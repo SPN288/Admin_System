@@ -10,6 +10,7 @@ export default function Navbar(props) {
             <ul className='nav-links'>
                     <li><Link to='/'>Home</Link></li>
                     <li>{props.email_id}</li>
+                    <li>{props.cart}</li>
                     <li>{props.logout}</li>
             </ul>
         </nav>

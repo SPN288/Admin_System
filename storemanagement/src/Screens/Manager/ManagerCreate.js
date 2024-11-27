@@ -13,6 +13,7 @@ const ManagerCreateForm = () => {
         store_id: "",
         password: ""
     });
+    
     // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,6 +30,14 @@ const ManagerCreateForm = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
+            });
+            const roleData= {email_id:formData.email_id,role: "manager"}
+            await fetch("http://localhost:5000/insert", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(roleData),
             });
 
             const result =await response.json();

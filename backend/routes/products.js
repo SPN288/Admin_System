@@ -46,4 +46,15 @@ router.post('/products', async (req, res) => {
       res.status(500).json({ message: 'Error deleting product', error });
     }
   });
+  router.put('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const { stock } = req.body;
+    try {
+      await Product.findByIdAndUpdate(id, { stock });
+      res.status(200).send({ message: 'Stock updated successfully' });
+    } catch (err) {
+      res.status(500).send({ error: 'Failed to update stock' });
+    }
+  });
+  
   module.exports = router;

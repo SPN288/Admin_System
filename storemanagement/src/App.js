@@ -38,7 +38,8 @@ function App() {
     <Routes>
       <Route exact path="/" element={<HomePage/>} />      
       {/* <Route exact path="/adminlogin" element={<AdminLoginForm/>} /> */}
-      <Route exact path="/product"  element={<ManageProductsManage/>} />
+      {/* <Route exact path="/product"  element={<ManageProductsManage/>} /> */}
+      <Route exact path="/product"  element={<PrivateAroute element={<ManageProductsManage/>}/>} />
       <Route exact path="/adminpage" element={<PrivateAroute element={<AdminPage/>}/>} />
       <Route exact path='/managerlogin' element={<ManagerLoginForm/>}/>
       <Route exact path='/managerpage' element={<PrivateMAroute element={<ManagerPage/>}/>}/>
