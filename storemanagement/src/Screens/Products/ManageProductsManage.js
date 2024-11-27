@@ -74,22 +74,47 @@ export default function ManageProductsManage() {
       console.error('Error deleting product:', error);
     }
   };
+  const [ShowAddProduct, setShowAddProduct] = useState(false);
+  const toggleAddProduct = () => {
+    setShowAddProduct(!ShowAddProduct);
+  };
 
   return (
     <>
     <Navbar email_id={amail} logout={<button className='button-32' onClick={handleLogOut}>Logout</button>} />
-    <div>
+    <div className='displaybox'>
+        <br/>
       <h1>Product Management</h1>
-      <ProductForm onAddProduct={handleAddProduct} />
+      {/* <ProductForm onAddProduct={handleAddProduct} /> */}
+
+      <button className='button-84' onClick={toggleAddProduct}>
+          {ShowAddProduct ? 'close' : 'Add Product'}
+        </button>
+        {ShowAddProduct && (
+          <div>
+            <ProductForm  onAddProduct={handleAddProduct} />
+          </div>
+        )}
+
+
+
+
+      {/* Overlay for Editing */}
       {editProduct && (
-        <ProductEditForm
-          product={editProduct}
-          onEditProduct={handleEditProduct}
-        />
+        <div className="overlay">
+          <div className="modal">
+            <ProductEditForm
+              product={editProduct}
+              onEditProduct={handleEditProduct}
+            />
+            <br />
+            <button className='cl' onClick={() => setEditProduct(null)}>Close</button>
+          </div>
+        </div>
       )}
       <div>
         <h2>Product List</h2>
-        <table border="1">
+        <table className="form-container" border="1">
             <thead>
                 <tr>
                     <th>Product ID</th>
@@ -108,8 +133,8 @@ export default function ManageProductsManage() {
                         <td>{product.pdname}</td>
                         <td>{product.description}</td>
                         <td>{product.stock}</td>
-                        <td><button onClick={() => setEditProduct(product)}>Edit</button></td>
-                        <td><button onClick={() => handleDeleteProduct(product._id)}>Delete</button></td>
+                        <td><button className="custom-btn btn-2" onClick={() => setEditProduct(product)}>Edit</button></td>
+                        <td><button className="custom-btn btn-2" onClick={() => handleDeleteProduct(product._id)}>Delete</button></td>
                     </tr>
                 ))}
             </tbody>

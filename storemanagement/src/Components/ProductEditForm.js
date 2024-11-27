@@ -17,8 +17,9 @@ const ProductEditForm = ({ product, onEditProduct }) => {
       <h2>Edit Product</h2>
       <input name="pdname" value={updatedProduct.pdname} onChange={handleChange} placeholder="Product Name" />
       <input name="description" value={updatedProduct.description} onChange={handleChange} placeholder="Description" />
-      <input name="stock" value={updatedProduct.stock} onChange={handleChange} placeholder="Stock" />
+      <input type='number' name="stock" value={updatedProduct.stock} onChange={handleChange} placeholder="Stock" />
       <input name="img_url" value={updatedProduct.img_url} onChange={handleChange} placeholder="Image URL" />
+      
       <button type="submit">Update</button>
     </form>
   );

@@ -25,7 +25,7 @@ const ProductForm = ({ onAddProduct }) => {
       <input name="product_id" value={product.product_id} onChange={handleChange} placeholder="Product ID" required />
       <input name="pdname" value={product.pdname} onChange={handleChange} placeholder="Product Name" required />
       <input name="description" value={product.description} onChange={handleChange} placeholder="Description" />
-      <input name="stock" value={product.stock} onChange={handleChange} placeholder="Stock" required />
+      <input type='number' name="stock" value={product.stock} onChange={handleChange} placeholder="Stock" required />
       <input name="img_url" value={product.img_url} onChange={handleChange} placeholder="Image URL" />
       <button type="submit">Add</button>
     </form>

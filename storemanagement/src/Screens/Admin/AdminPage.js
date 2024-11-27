@@ -100,6 +100,7 @@ export default function AdminPage() {
   const toggleCreateManager = () => {
     setCreateManager(!showCreateManager);
   };
+  const navProductPage=()=>{navigate("/product");}
 
   return (
     <>
@@ -107,6 +108,8 @@ export default function AdminPage() {
       <Navbar email_id={amail} logout={<button className='button-32' onClick={handleLogOut}>Logout</button>} />
       <div className='displaybox'>
         <br />
+        <h1>Products</h1>
+        <button className='button-84' onClick={navProductPage}>Manage Product</button>
         <h1>Users</h1>
         <button className='button-84' onClick={toggleCreateUser}>
           {showCreateUser ? 'close' : 'Add User'}
@@ -125,7 +128,7 @@ export default function AdminPage() {
 
         {showUsers && (
           <div>
-            <table border="1">
+            <table className="form-container" border="1">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -168,7 +171,7 @@ export default function AdminPage() {
         </button>
         {showManagers && (
           <div>
-            <table border="1">
+            <table className="form-container" border="1">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -195,10 +198,9 @@ export default function AdminPage() {
             
           </div>
         )}
-
-
-
+        <br />
       </div>
+      
     </>
   )
 }
