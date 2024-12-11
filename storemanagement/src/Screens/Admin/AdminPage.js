@@ -27,12 +27,12 @@ export default function AdminPage() {
         'Authorization': localStorage.getItem('atoken')
       }
     }
-    fetch('http://localhost:5000/users', headers)
+    fetch('https://admin-system-1.onrender.com/users', headers)
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error('Error fetching users:', error));
 
-    fetch('http://localhost:5000/mg', headers)
+    fetch('https://admin-system-1.onrender.com/mg', headers)
       .then((response) => response.json())
       .then((data) => setManagers(data))
       .catch((error) => console.error('Error fetching managers:', error));
@@ -46,7 +46,7 @@ export default function AdminPage() {
   };
   const deleteUser = async (emailId) => {
     try {
-      const response = await fetch(`http://localhost:5000/deleteuser/${emailId}`, {
+      const response = await fetch(`https://admin-system-1.onrender.com/deleteuser/${emailId}`, {
         method: 'DELETE',
       });
       const result = await response.json();
@@ -70,7 +70,7 @@ export default function AdminPage() {
   
   const deleteManager = async (emailId) => {
     try {
-      const response = await fetch(`http://localhost:5000/deletemanager/${emailId}`, {
+      const response = await fetch(`https://admin-system-1.onrender.com/deletemanager/${emailId}`, {
         method: 'DELETE',
       });
       const result = await response.json();

@@ -15,7 +15,7 @@ const Cart = ({ cart, setCart, fetchProducts }) => {
     try {
       await Promise.all(
         cart.map(async (item) => {
-          await fetch(`http://localhost:5000/products/${item._id}`, {
+          await fetch(`https://admin-system-1.onrender.com/products/${item._id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -29,7 +29,7 @@ const UCreateForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createuser", {
+            const response = await fetch("https://admin-system-1.onrender.com/createuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const UCreateForm = () => {
                 body: JSON.stringify(formData),
             });
             const roleData= {email_id:formData.email_id,role: "user"}
-            await fetch("http://localhost:5000/insert", {
+            await fetch("https://admin-system-1.onrender.com/insert", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

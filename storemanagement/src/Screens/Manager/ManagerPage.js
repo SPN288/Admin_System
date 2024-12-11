@@ -25,7 +25,7 @@ export default function ManagerPage() {
         'Authorization': localStorage.getItem('mtoken')
       }
     }
-    fetch('http://localhost:5000/usersformanager', headers)
+    fetch('https://admin-system-1.onrender.com/usersformanager', headers)
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error('Error fetching users:', error));
@@ -34,7 +34,7 @@ export default function ManagerPage() {
   // Function to delete a user by email_id
   const deleteUser = async (emailId) => {
     try {
-      const response = await fetch(`http://localhost:5000/deleteuser/${emailId}`, {
+      const response = await fetch(`https://admin-system-1.onrender.com/deleteuser/${emailId}`, {
         method: 'DELETE',
       });
       const result = await response.json();

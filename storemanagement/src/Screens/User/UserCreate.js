@@ -16,7 +16,7 @@ const UserLoginForm = () => {
         password: ""
     });
 
-    const departments = ["HR", "Finance", "Engineering", "Marketing", "Sales"];
+    const departments = ["Finance", "Engineering", "Marketing", "Sales"];
 
     // Handle input changes
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ const UserLoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createuser", {
+            const response = await fetch("https://admin-system-1.onrender.com/createuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

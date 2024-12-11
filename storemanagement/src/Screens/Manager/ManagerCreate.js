@@ -24,7 +24,7 @@ const ManagerCreateForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/createmanager", {
+            const response = await fetch("https://admin-system-1.onrender.com/createmanager", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const ManagerCreateForm = () => {
                 body: JSON.stringify(formData),
             });
             const roleData= {email_id:formData.email_id,role: "manager"}
-            await fetch("http://localhost:5000/insert", {
+            await fetch("https://admin-system-1.onrender.com/insert", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

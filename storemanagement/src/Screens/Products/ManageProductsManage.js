@@ -24,7 +24,7 @@ export default function ManageProductsManage() {
   // Fetch all products
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/products');
+      const response = await fetch('https://admin-system-1.onrender.com/products');
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -39,7 +39,7 @@ export default function ManageProductsManage() {
   // Add a new product
   const handleAddProduct = async (product) => {
     try {
-      await fetch('http://localhost:5000/products', {
+      await fetch('https://admin-system-1.onrender.com/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(product),
@@ -53,7 +53,7 @@ export default function ManageProductsManage() {
   // Edit an existing product
   const handleEditProduct = async (id, updates) => {
     try {
-      await fetch(`http://localhost:5000/products/${id}`, {
+      await fetch(`https://admin-system-1.onrender.com/products/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates),
@@ -68,7 +68,7 @@ export default function ManageProductsManage() {
   // Delete a product
   const handleDeleteProduct = async (id) => {
     try {
-      await fetch(`http://localhost:5000/products/${id}`, {
+      await fetch(`https://admin-system-1.onrender.com/products/${id}`, {
         method: 'DELETE',
       });
       fetchProducts();
